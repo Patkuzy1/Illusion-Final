@@ -1,44 +1,44 @@
-var bubbles = [];
+int x=360;
+int c;
+void setup(){
+  size(500,500);
+  
+  colorMode(HSB);
+}
+void draw(){
 
+  background(90);
+  
+ 
+  translate(250,250);
 
-function setup() {
-  createCanvas(windowWidth, windowHeight); 
-  for (var i=0; i<7; i++){
-    bubbles[i]= new Bubble(200*cos(i)+750,200*sin(i)+400,i);
-   background(0);  
+  for (int t=0, C=0; t<x; t++, C++){
+    
+    if (2*c + C > 256){
+    C-=206;
+    }
+    else if (2*c + C < 0){
+      C+=206;
+    }
+    fill(C + 2*c,2005,255);
+ 
+    rotate(radians(13));
+    
+   rect(t-x,8,2*sqrt(abs(t-x)),2*sqrt(abs(t-x)));
+  }
+ 
+  noFill();
+  strokeWeight(7);
+  stroke(0);
+  for(int n = 9; n < 60; n++){
+    
+    if(-c + 18*n > 0){
+      ellipse(0, 0, -c + 18*n, -c + 18*n);
+    }
+    if(c > 256){
+      c-=26;
     }
   }
-  
-
-
-function draw() {
-  
-  
-  for (var i=0; i<bubbles.length; i++){
-    bubbles[i].move();
-    bubbles[i].display();
-  }
-}
-  
-
-
-function Bubble(x,y,a) {
-  this.x=x;
-  this.y=y;
-  this.a=a;
-  
-  this.display = function() {
-    stroke(255);
-    noFill();
-    triangle(89*cos(this.a)+this.x,22*sin(this.a)+this.y, 289,50);
-  }
-  this.move = function() {
-    
-   this.a=this.a+.2;
-   
-    
-    
-    
-    
-  }
+  noStroke();
+  c+=1;
 }
